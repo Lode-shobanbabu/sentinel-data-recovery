@@ -6,6 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SiberSentinel — Enterprise Data Recovery</title>
 
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
   <!-- Bootstrap -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" defer></script>
@@ -31,47 +34,60 @@
 </head>
 
 <body>
+
   <!-- ═══════════════ NAVBAR ═══════════════ -->
   <nav class="ss-navbar navbar navbar-expand-lg sticky-top">
     <div class="container-xl">
 
       <!-- Logo -->
       <a class="navbar-brand" href="#">
-        <img src="assets/images/logo.webp" alt="SiberSentinel Logo" class="ss-navbar__logo" />
+        <img src="assets/images/sentinel-data-recovery-logo (2).webp" alt="SiberSentinel Logo"
+          class="ss-navbar__logo" />
       </a>
 
       <!-- Hamburger -->
-      <button class="ss-navbar__toggler navbar-toggler" type="button" data-bs-toggle="collapse"
-        data-bs-target="#mainNavMenu" aria-controls="mainNavMenu" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="ss-navbar__toggler navbar-toggler d-lg-none" type="button" data-bs-toggle="offcanvas"
+        data-bs-target="#mainNavMenu" aria-controls="mainNavMenu">
         <span></span><span></span><span></span>
       </button>
-
-      <!-- Collapsible Menu -->
-      <div class="collapse navbar-collapse" id="mainNavMenu">
-        <!-- Links -->
+      <!-- Desktop Menu -->
+      <div class="collapse navbar-collapse d-none d-lg-flex">
         <ul class="navbar-nav mx-auto gap-1">
           <li class="nav-item"><a class="nav-link ss-navbar__link" href="#">Services</a></li>
-          <li class="nav-item"><a class="nav-link ss-navbar__link" href="#">Industries</a></li>
           <li class="nav-item"><a class="nav-link ss-navbar__link" href="#">Customers</a></li>
-          <li class="nav-item"><a class="nav-link ss-navbar__link" href="#">Consultation</a></li>
           <li class="nav-item"><a class="nav-link ss-navbar__link" href="#">Process</a></li>
           <li class="nav-item"><a class="nav-link ss-navbar__link" href="#">Contact</a></li>
         </ul>
-
-        <!-- CTA Buttons -->
         <div class="ss-navbar__cta-group d-flex align-items-center gap-2">
-          <a href="#" class="ss-btn--whatsapp">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-              <path
-                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-            </svg>
-            WhatsApp
-          </a>
+          <a href="#" class="ss-btn--whatsapp">WhatsApp</a>
           <a href="#" class="ss-btn--book">Book Pickup</a>
         </div>
       </div>
     </div>
   </nav>
+  <!-- ═══════════════ NAVBAR END ═══════════════ -->
+  <!-- ═══════════════ MOBILE OFFCANVAS ═══════════════ -->
+  <div class="offcanvas offcanvas-start" tabindex="-1" id="mainNavMenu">
+
+    <div class="offcanvas-header">
+      <a href="#" class="offcanvas-logo">
+        <img src="assets/images/sentinel-data-recovery-logo (2).webp" alt="Logo" class="offcanvas-logo-img">
+      </a>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+    </div>
+    <div class="offcanvas-body">
+      <ul class="navbar-nav gap-2">
+        <li class="nav-item"><a class="nav-link ss-navbar__link" href="#">Services</a></li>
+        <li class="nav-item"><a class="nav-link ss-navbar__link" href="#">Customers</a></li>
+        <li class="nav-item"><a class="nav-link ss-navbar__link" href="#">Process</a></li>
+        <li class="nav-item"><a class="nav-link ss-navbar__link" href="#">Contact</a></li>
+      </ul>
+      <div class="ss-navbar__cta-group d-flex flex-column gap-2 mt-3">
+        <a href="#" class="ss-btn--whatsapp text-center">WhatsApp</a>
+        <a href="#" class="ss-btn--book text-center">Book Pickup</a>
+      </div>
+    </div>
+  </div>
   <!-- ═══════════════ /NAVBAR ═══════════════ -->
   <!-- ═══════════════ HERO ═══════════════ -->
   <section class="ss-hero" id="hero">
@@ -79,19 +95,17 @@
 
       <!-- Left -->
       <div class="ss-hero__left">
-        <div class="ss-hero__badge">Sentinel Data Recovery &bull; Empowering Corporates</div>
+        <div class="ss-hero__badge">Sentinel Data Recovery & Empowering Corporates</div>
 
         <h1 class="ss-hero__title">
-          Enterprise-Grade
-          Data Recovery for
-          Critical Business Loss.
+          Professional Data Recovery 24/7
         </h1>
         <p class="ss-hero__desc clr">
           Retrieve lost, corrupted, or deleted data from Servers, RAID Arrays,
           NAS, SAN, HDDs, SSDs, NVMe, USB drives, memory cards and virtual machines.
         </p>
         <div class="ss-hero__btns">
-          <a href="#" class="ss-btn ss-btn--primary">Book Free Pickup &nbsp;→</a>
+          <a href="#" class="ss-btn ss-btn--primary">Book Free Pickup &→</a>
           <a href="#" class="ss-btn ss-btn--outline">WhatsApp Support</a>
         </div>
         <div class="ss-hero__trust-row">
@@ -110,11 +124,41 @@
         </div>
       </div>
       <!-- Right -->
-      <div class="ss-hero__right">
+      <!-- <div class="ss-hero__right">
         <div class="ss-hero__img-wrap">
           <img src="assets/images/herosection.avif" alt="Enterprise data recovery lab" />
         </div>
+      </div> -->
+      <div id="heroSlider" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+
+        <!-- Indicators (Dots) -->
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#heroSlider" data-bs-slide-to="0" class="active"></button>
+          <button type="button" data-bs-target="#heroSlider" data-bs-slide-to="1"></button>
+          <button type="button" data-bs-target="#heroSlider" data-bs-slide-to="2"></button>
+        </div>
+
+        <div class="carousel-inner">
+
+          <div class="carousel-item active">
+            <img src="assets/images/herosection.avif" class="d-block w-100" alt="Slide 1">
+          </div>
+
+          <div class="carousel-item">
+            <img src="assets/images/herosection.avif" class="d-block w-100" alt="Slide 2">
+          </div>
+
+          <div class="carousel-item">
+            <img src="assets/images/herosection.avif" class="d-block w-100" alt="Slide 3">
+          </div>
+
+        </div>
+
       </div>
+
+
+
+
     </div>
   </section>
   <!-- ═══════════════ /HERO ═══════════════ -->
@@ -144,7 +188,7 @@
                 <path d="M3 12A9 3 0 0 0 21 12"></path>
               </svg>
             </div>
-            <h3 class="ss-expertise__card-title">Server, RAID &amp; NAS Recovery</h3>
+            <h3 class="ss-expertise__card-title">Server, RAID & NAS Recovery</h3>
             <p class="ss-expertise__card-desc">
               Recovery from server corruption, RAID failures, and NAS/SAN storage breakdowns.
             </p>
@@ -167,7 +211,7 @@
                 <line x1="10" x2="10.01" y1="16" y2="16"></line>
               </svg>
             </div>
-            <h3 class="ss-expertise__card-title">HDD, SSD &amp; NVMe Recovery</h3>
+            <h3 class="ss-expertise__card-title">HDD, SSD & NVMe Recovery</h3>
             <p class="ss-expertise__card-desc">
               Specialized recovery from hard disk crashes, damaged SSDs, and NVMe failures.
             </p>
@@ -207,7 +251,7 @@
                 <rect x="8" y="8" width="8" height="8" rx="1"></rect>
               </svg>
             </div>
-            <h3 class="ss-expertise__card-title">USB &amp; Memory Card Recovery</h3>
+            <h3 class="ss-expertise__card-title">USB & Memory Card Recovery</h3>
             <p class="ss-expertise__card-desc">
               Accidental deletion, corruption, or format recovery for portable media.
             </p>
@@ -225,14 +269,13 @@
       <p class="ss-recovery__desc clr">
         Detailed support for routine losses and high-complexity incident cases.
       </p>
-
       <div class="swiper mySwiper">
         <div class="swiper-wrapper">
 
           <div class="swiper-slide">
             <div class="ss-recovery__card">
               <div class="ss-recovery__card-img">
-                <img src="assets/images/hddssd.jpg" alt="Hardware Failure" />
+                <img src="assets/images/serviceimages/serviceone.png" alt="Hardware Failure" />
               </div>
               <div class="ss-recovery__card-body">
                 <div class="ss-recovery__card-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
@@ -247,8 +290,9 @@
                     <path d="M12 9v4"></path>
                     <path d="M12 17h.01"></path>
                   </svg></div>
-                <h3 class="ss-recovery__card-title">Hardware Failure</h3>
-                <p class="ss-recovery__card-desc">Disk crash, head damage, clicking drives, PCB failures.</p>
+                <h3 class="ss-recovery__card-title">External drive data recovery</h3>
+                <p class="ss-recovery__card-desc">We recover data from both external SSD and HDD drives. Rely on
+                  certified experts to restore your important files from damaged or corrupted external drives.</p>
               </div>
             </div>
           </div>
@@ -256,7 +300,8 @@
           <div class="swiper-slide">
             <div class="ss-recovery__card">
               <div class="ss-recovery__card-img">
-                <img src="assets/images/accidental.jpg" alt="Firmware Corruption" />
+                <img src="assets/images/serviceimages/Gemini_Generated_Image_6k1yml6k1yml6k1y.png"
+                  alt="Firmware Corruption" />
               </div>
               <div class="ss-recovery__card-body">
                 <div class="ss-recovery__card-icon"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
@@ -271,8 +316,9 @@
                     <path d="M12 9v4"></path>
                     <path d="M12 17h.01"></path>
                   </svg></div>
-                <h3 class="ss-recovery__card-title">Accidental Deletion</h3>
-                <p class="ss-recovery__card-desc">Deleted files, formatted partitions, lost folders and snapshots.
+                <h3 class="ss-recovery__card-title">Hard drive data recovery</h3>
+                <p class="ss-recovery__card-desc"> Recover data from all brands of HDD, PC hard drives, and hybrid
+                  disks. Our specialists ensure fast and secure recovery for any data loss scenario.
                 </p>
               </div>
             </div>
@@ -280,7 +326,7 @@
           <div class="swiper-slide">
             <div class="ss-recovery__card">
               <div class="ss-recovery__card-img">
-                <img src="assets/images/serverimg.jpg" alt="Logical Corruption" />
+                <img src="assets/images/serviceimages/servicethree.png" alt="Logical Corruption" />
               </div>
               <div class="ss-recovery__card-body">
                 <div class="ss-recovery__card-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
@@ -295,16 +341,18 @@
                     <path d="M3 5V19A9 3 0 0 0 21 19V5"></path>
                     <path d="M3 12A9 3 0 0 0 21 12"></path>
                   </svg></div>
-                <h3 class="ss-recovery__card-title">RAID/Server Corruption
+                <h3 class="ss-recovery__card-title">Mobile device data recovery
                 </h3>
-                <p class="ss-recovery__card-desc">RAID rebuild failure, degraded arrays, virtual host issues.</p>
+                <p class="ss-recovery__card-desc">Our mobile data recovery experts restore lost or deleted files from
+                  any iPhone, Android device, tablet, or iPad. Using industry-leading tools, we recover photos,
+                  contacts, messages, and more.</p>
               </div>
             </div>
           </div>
           <div class="swiper-slide">
             <div class="ss-recovery__card">
               <div class="ss-recovery__card-img">
-                <img src="assets/images/ransomware.jpg" alt="RAID / Server Corruption" />
+                <img src="assets/images/serviceimages/servicefour.jpg" alt="RAID / Server Corruption" />
               </div>
               <div class="ss-recovery__card-body">
                 <div class="ss-recovery__card-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
@@ -319,8 +367,58 @@
                     <path d="M12 9v4"></path>
                     <path d="M12 17h.01"></path>
                   </svg></div>
-                <h3 class="ss-recovery__card-title">Ransomware Incidents</h3>
-                <p class="ss-recovery__card-desc">Encrypted storage, damaged file systems, post-attack recovery.</p>
+                <h3 class="ss-recovery__card-title">NAS data recovery</h3>
+                <p class="ss-recovery__card-desc">Recover data from NAS devices, including RAID configurations. Our team
+                  handles all types of NAS systems and ensures data recovery with minimal downtime.</p>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="ss-recovery__card">
+              <div class="ss-recovery__card-img">
+                <img src="assets/images/serverimg.jpg" alt="Ransomware Incidents" />
+              </div>
+              <div class="ss-recovery__card-body">
+                <div class="ss-recovery__card-icon"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" class="lucide lucide-database h-5 w-5" aria-hidden="true"
+                    x-file-name="ExpandedDetails" x-line-number="157" x-column="22" x-component="Icon"
+                    x-id="ExpandedDetails_157_22" x-dynamic="true" x-source-type="static-imported"
+                    x-source-var="scenarios" x-source-file-abs="/app/frontend/src/components/ExpandedDetails.jsx"
+                    x-source-line="6" x-source-editable="true" x-array-var="scenarios" x-array-line="6"
+                    x-array-item-param="item">
+                    <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+                    <path d="M3 5V19A9 3 0 0 0 21 19V5"></path>
+                    <path d="M3 12A9 3 0 0 0 21 12"></path>
+                  </svg></div>
+                <h3 class="ss-recovery__card-title">RAID data recovery</h3>
+                <p class="ss-recovery__card-desc">Our RAID data recovery services cover RAID 0, 1, 5, 10, and other
+                  configurations. We offer expert solutions for failed, degraded, or corrupted RAID arrays.</p>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="ss-recovery__card">
+              <div class="ss-recovery__card-img">
+                <img src="assets/images/serviceimages/servicefive.avif" alt="Ransomware Incidents" />
+              </div>
+              <div class="ss-recovery__card-body">
+                <div class="ss-recovery__card-icon"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" class="lucide lucide-database h-5 w-5" aria-hidden="true"
+                    x-file-name="ExpandedDetails" x-line-number="157" x-column="22" x-component="Icon"
+                    x-id="ExpandedDetails_157_22" x-dynamic="true" x-source-type="static-imported"
+                    x-source-var="scenarios" x-source-file-abs="/app/frontend/src/components/ExpandedDetails.jsx"
+                    x-source-line="6" x-source-editable="true" x-array-var="scenarios" x-array-line="6"
+                    x-array-item-param="item">
+                    <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+                    <path d="M3 5V19A9 3 0 0 0 21 19V5"></path>
+                    <path d="M3 12A9 3 0 0 0 21 12"></path>
+                  </svg></div>
+                <h3 class="ss-recovery__card-title">SAN data recovery</h3>
+                <p class="ss-recovery__card-desc">Our team specializes in handling SAN devices from leading
+                  manufacturers like Dell EMC, HP, and IBM, ensuring efficient recovery with minimal disruption to your
+                  operations.</p>
               </div>
             </div>
           </div>
@@ -342,8 +440,57 @@
                     <path d="M3 5V19A9 3 0 0 0 21 19V5"></path>
                     <path d="M3 12A9 3 0 0 0 21 12"></path>
                   </svg></div>
-                <h3 class="ss-recovery__card-title">Ransomware Incidents</h3>
-                <p class="ss-recovery__card-desc">Encrypted storage, damaged file systems, post-attack recovery.</p>
+                <h3 class="ss-recovery__card-title">SD card data recovery</h3>
+                <p class="ss-recovery__card-desc">Our recovery experts specialize in restoring data from SD and memory
+                  cards. We guarantee quick recovery with a no-data, no-charge policy.</p>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="ss-recovery__card">
+              <div class="ss-recovery__card-img">
+                <img src="assets/images/serviceimages/serviceeight.png" alt="Ransomware Incidents" />
+              </div>
+              <div class="ss-recovery__card-body">
+                <div class="ss-recovery__card-icon"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" class="lucide lucide-database h-5 w-5" aria-hidden="true"
+                    x-file-name="ExpandedDetails" x-line-number="157" x-column="22" x-component="Icon"
+                    x-id="ExpandedDetails_157_22" x-dynamic="true" x-source-type="static-imported"
+                    x-source-var="scenarios" x-source-file-abs="/app/frontend/src/components/ExpandedDetails.jsx"
+                    x-source-line="6" x-source-editable="true" x-array-var="scenarios" x-array-line="6"
+                    x-array-item-param="item">
+                    <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+                    <path d="M3 5V19A9 3 0 0 0 21 19V5"></path>
+                    <path d="M3 12A9 3 0 0 0 21 12"></path>
+                  </svg></div>
+                <h3 class="ss-recovery__card-title">SSD data recovery</h3>
+                <p class="ss-recovery__card-desc">Our data recovery experts handle all SSD data loss scenarios with
+                  advanced tools, ensuring maximum recovery with high-security protocols.</p>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="ss-recovery__card">
+              <div class="ss-recovery__card-img">
+                <img src="assets/images/serviceimages/servicenine.png" alt="Ransomware Incidents" />
+              </div>
+              <div class="ss-recovery__card-body">
+                <div class="ss-recovery__card-icon"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" class="lucide lucide-database h-5 w-5" aria-hidden="true"
+                    x-file-name="ExpandedDetails" x-line-number="157" x-column="22" x-component="Icon"
+                    x-id="ExpandedDetails_157_22" x-dynamic="true" x-source-type="static-imported"
+                    x-source-var="scenarios" x-source-file-abs="/app/frontend/src/components/ExpandedDetails.jsx"
+                    x-source-line="6" x-source-editable="true" x-array-var="scenarios" x-array-line="6"
+                    x-array-item-param="item">
+                    <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+                    <path d="M3 5V19A9 3 0 0 0 21 19V5"></path>
+                    <path d="M3 12A9 3 0 0 0 21 12"></path>
+                  </svg></div>
+                <h3 class="ss-recovery__card-title">USB flash data recovery</h3>
+                <p class="ss-recovery__card-desc">Recover lost data from USB flash drives, regardless of the damage or
+                  brand. We offer free in-lab evaluations to assess data recovery needs.</p>
               </div>
             </div>
           </div>
@@ -614,74 +761,73 @@
   </section>
   <!-- ═══════════════ /CERTIFICATIONS ═══════════════ -->
   <!-- ═══════════════ CUSTOMER FEEDBACK ═══════════════ -->
-  <section class="ss-feedback" id="feedback">
-    <div class="ss-feedback__inner">
-      <span class="ss-section-label">CUSTOMER FEEDBACK</span>
-      <p class="ss-feedback__desc clr">What clients value: speed, transparency, and secure execution.</p>
-      <div class="ss-testimonials">
-        <div class="ss-testimonial-card">
-          <div class="ss-testimonial-card__icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-              <path d="M8 12a2 2 0 0 0 2-2V8H8"></path>
-              <path d="M14 12a2 2 0 0 0 2-2V8h-2"></path>
-            </svg>
-          </div>
-          <p class="ss-testimonial-card__quote">
-            Sentinel helped us recover mission-critical files after RAID failure with clear communication throughout.
-          </p>
-          <span class="ss-testimonial-card__author">IT Manager, Manufacturing Company</span>
+<section class="testimonial-container">
+    <div class="testimonial-header">
+        <div class="header-content">
+            <h5 class="section-tag">CUSTOMER FEEDBACK</h5>
+            <h2 class="section-heading clr">What clients value: speed, transparency, and secure execution.</h2>
         </div>
-        <div class="ss-testimonial-card">
-          <div class="ss-testimonial-card__icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-              <path d="M8 12a2 2 0 0 0 2-2V8H8"></path>
-              <path d="M14 12a2 2 0 0 0 2-2V8h-2"></path>
-            </svg>
-          </div>
-          <p class="ss-testimonial-card__quote">
-            Fast emergency response and secure handling. Our legal and finance archives were restored safely.
-          </p>
-          <span class="ss-testimonial-card__author">CIO Office, Enterprise Client</span>
-        </div>
-
-        <div class="ss-testimonial-card">
-          <div class="ss-testimonial-card__icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-              <path d="M8 12a2 2 0 0 0 2-2V8H8"></path>
-              <path d="M14 12a2 2 0 0 0 2-2V8h-2"></path>
-            </svg>
-          </div>
-          <p class="ss-testimonial-card__quote">
-            Transparent pricing and no hidden surprises. The diagnostics report made decision-making easy.
-          </p>
-          <span class="ss-testimonial-card__author">Operations Head, SMB</span>
-        </div>
-
-      </div>
-
-      <!-- Ecosystem Bar -->
-      <div class="ss-ecosystem">
-        <h3 class="ss-ecosystem__title">Trusted Technology Ecosystem</h3>
-        <div class="ss-ecosystem__pills">
-          <span class="ss-ecosystem__pill">Apple</span>
-          <span class="ss-ecosystem__pill">Dell</span>
-          <span class="ss-ecosystem__pill">IBM</span>
-          <span class="ss-ecosystem__pill">VMware</span>
-          <span class="ss-ecosystem__pill">SanDisk</span>
-          <span class="ss-ecosystem__pill">NetApp</span>
-          <span class="ss-ecosystem__pill">HP</span>
-          <span class="ss-ecosystem__pill">Western Digital</span>
-        </div>
-      </div>
-
+        <div class="carousel-navigation" id="dots-container"></div>
     </div>
-  </section>
+
+    <div class="testimonial-viewport">
+        <div class="testimonial-track" id="testimonial-track">
+            <div class="testimonial-card">
+                <div class="quote-icon"><i class="fa-regular fa-comment-dots"></i></div>
+                <p class="feedback-body">Sentinel helped us recover mission-critical files after RAID failure with clear communication.</p>
+                <h6 class="client-label">IT MANAGER, MANUFACTURING COMPANY</h6>
+            </div>
+            <div class="testimonial-card">
+                <div class="quote-icon"><i class="fa-regular fa-comment-dots"></i></div>
+                <p class="feedback-body">Fast emergency response and secure handling. Our archives were restored safely.</p>
+                <h6 class="client-label">CIO OFFICE, ENTERPRISE CLIENT</h6>
+            </div>
+            <div class="testimonial-card">
+                <div class="quote-icon"><i class="fa-regular fa-comment-dots"></i></div>
+                <p class="feedback-body">Transparent pricing and no hidden surprises. The diagnostics report made decision-making easy.</p>
+                <h6 class="client-label">OPERATIONS HEAD, SMB</h6>
+            </div>
+            <div class="testimonial-card">
+                <div class="quote-icon"><i class="fa-regular fa-comment-dots"></i></div>
+                <p class="feedback-body">Highly professional team that delivered our infrastructure project ahead of schedule.</p>
+                <h6 class="client-label">PROJECT DIRECTOR, INFRA CORP</h6>
+            </div>
+
+             <div class="testimonial-card">
+                <div class="quote-icon"><i class="fa-regular fa-comment-dots"></i></div>
+                <p class="feedback-body">Sentinel helped us recover mission-critical files after RAID failure with clear communication.</p>
+                <h6 class="client-label">IT MANAGER, MANUFACTURING COMPANY</h6>
+            </div>
+            <div class="testimonial-card">
+                <div class="quote-icon"><i class="fa-regular fa-comment-dots"></i></div>
+                <p class="feedback-body">Fast emergency response and secure handling. Our archives were restored safely.</p>
+                <h6 class="client-label">CIO OFFICE, ENTERPRISE CLIENT</h6>
+            </div>
+            <div class="testimonial-card">
+                <div class="quote-icon"><i class="fa-regular fa-comment-dots"></i></div>
+                <p class="feedback-body">Transparent pricing and no hidden surprises. The diagnostics report made decision-making easy.</p>
+                <h6 class="client-label">OPERATIONS HEAD, SMB</h6>
+            </div>
+            <div class="testimonial-card">
+                <div class="quote-icon"><i class="fa-regular fa-comment-dots"></i></div>
+                <p class="feedback-body">Highly professional team that delivered our infrastructure project ahead of schedule.</p>
+                <h6 class="client-label">PROJECT DIRECTOR, INFRA CORP</h6>
+            </div>
+        </div>
+    </div>
+
+    <div class="ecosystem-footer">
+        <div class="ecosystem-label">Trusted Technology Ecosystem</div>
+        <div class="brand-wrapper">
+            <span class="brand-pill">Apple</span><span class="brand-pill">Dell</span>
+            <span class="brand-pill">IBM</span><span class="brand-pill">VMware</span>
+            <span class="brand-pill">SanDisk</span><span class="brand-pill">NetApp</span>
+            <span class="brand-pill">HP</span><span class="brand-pill">Western Digital</span>
+        </div>
+    </div>
+</section>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <!-- ═══════════════ /CUSTOMER FEEDBACK ═══════════════ -->
   <!-- ═══════════════ TRUSTED CLIENTS ═══════════════ -->
   <section class="ss-clients" id="customers">
@@ -1017,6 +1163,165 @@
     </div>
   </section>
   <!-- ═══════════════ /HOW IT WORKS ═══════════════ -->
+
+
+
+  <!-- ═══════════════ PROCESS SECTION first ═══════════════ -->
+  <section class="ss-process" id="process">
+    <div class="ss-process__inner">
+      <span class="ss-section-label">How it works</span>
+      <h2 class="ss-process__title">Our Recovery Process</h2>
+
+      <div class="ss-process__stage">
+        <svg class="ss-process__svg" id="ptSvg" xmlns="http://www.w3.org/2000/svg"></svg>
+
+        <div class="ss-process__cards" id="ptCards">
+
+          <!-- Card 1 -->
+          <div class="ss-process__card" id="ptc1">
+            <div class="ss-process__icon">
+              <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="#8b7fd4" stroke-width="1.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="5" />
+                <line x1="12" y1="1" x2="12" y2="3" />
+                <line x1="12" y1="21" x2="12" y2="23" />
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+                <line x1="1" y1="12" x2="3" y2="12" />
+                <line x1="21" y1="12" x2="23" y2="12" />
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+              </svg>
+            </div>
+            <div class="ss-process__card-title">Phase 01</div>
+            <div class="ss-process__card-desc">Free diagnosis and no-obligation assessment of your device.</div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="ss-process__card" id="ptc2">
+            <div class="ss-process__icon">
+              <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="#8b7fd4" stroke-width="1.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                <circle cx="12" cy="7" r="4" />
+              </svg>
+            </div>
+            <div class="ss-process__card-title">Phase 02</div>
+            <div class="ss-process__card-desc">Approval and transparent quote before any work begins.</div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="ss-process__card" id="ptc3">
+            <div class="ss-process__icon">
+              <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="#6ec6b8" stroke-width="1.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z" />
+              </svg>
+            </div>
+            <div class="ss-process__card-title">Phase 03</div>
+            <div class="ss-process__card-desc">Certified cleanroom data recovery by our engineers.</div>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="ss-process__card" id="ptc4">
+            <div class="ss-process__icon">
+              <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="#6ec6b8" stroke-width="1.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="3" />
+                <path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14" />
+              </svg>
+            </div>
+            <div class="ss-process__card-title">Phase 04</div>
+            <div class="ss-process__card-desc">File integrity verification before final handover.</div>
+          </div>
+
+          <!-- Card 5 -->
+          <div class="ss-process__card" id="ptc5">
+            <div class="ss-process__icon">
+              <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="#e8d87a" stroke-width="1.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="3" width="20" height="14" rx="2" />
+                <line x1="8" y1="21" x2="16" y2="21" />
+                <line x1="12" y1="17" x2="12" y2="21" />
+              </svg>
+            </div>
+            <div class="ss-process__card-title">Phase 05</div>
+            <div class="ss-process__card-desc">Secure delivery via encrypted drive or transfer.</div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- ═══════════════ /PROCESS SECTION ═══════════════ -->
+
+  <!-- ═══════════════ /PROCESS SECTION ═══════════════ -->
+  <!-- process section code second  -->
+  <section class="workflow-section">
+    <div class="workflow-container">
+      <svg class="line-svg" viewBox="0 0 1000 500" preserveAspectRatio="none">
+        <path d="M50,0 V380 Q50,430 100,430 H320 Q370,430 370,380 V100 Q370,50 420,50 H630 Q680,50 680,100 V480"
+          fill="none" stroke="#222" stroke-width="4" stroke-linecap="round" />
+      </svg>
+
+      <div class="step s1">
+        <div class="icon-box"><img src="https://cdn-icons-png.flaticon.com/512/2983/2983067.png" alt="pickup"></div>
+        <div class="content">
+          <span class="number">01</span>
+          <h3>Media Pickup</h3>
+          <p>We would pick up the storage device at your convenient time and place</p>
+        </div>
+      </div>
+
+      <div class="step s2">
+        <div class="icon-box"><img src="https://cdn-icons-png.flaticon.com/512/2082/2082805.png" alt="analysis"></div>
+        <div class="content">
+          <span class="number">02</span>
+          <h3>Media Analysis</h3>
+          <p>Our in-house experts would assess the extent of damage on the storage device</p>
+        </div>
+      </div>
+
+      <div class="step s3">
+        <div class="icon-box"><img src="https://cdn-icons-png.flaticon.com/512/2920/2920323.png" alt="recovery"></div>
+        <div class="content">
+          <span class="number">03</span>
+          <h3>Data Recovery</h3>
+          <p>We have Clean Room environment to successfully retrieve data</p>
+        </div>
+      </div>
+
+      <div class="step s4">
+        <div class="icon-box"><img src="https://cdn-icons-png.flaticon.com/512/1162/1162456.png" alt="verification">
+        </div>
+        <div class="content">
+          <span class="number">04</span>
+          <h3>Data Verification</h3>
+          <p>After retrieving data, we ask you to verify it Online or Offline</p>
+        </div>
+      </div>
+
+      <div class="step s5">
+        <div class="icon-box"><img src="https://cdn-icons-png.flaticon.com/512/2489/2489756.png" alt="payment"></div>
+        <div class="content">
+          <span class="number">05</span>
+          <h3>Payment</h3>
+          <p>No Data No Charge, pay only if you are satisfied with recovery result</p>
+        </div>
+      </div>
+
+      <div class="step s6">
+        <div class="icon-box"><img src="https://cdn-icons-png.flaticon.com/512/2450/2450254.png" alt="delivery"></div>
+        <div class="content">
+          <span class="number">06</span>
+          <h3>Data Delivery</h3>
+          <p>Data shall be delivered in another media at your doorstep</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- process section code -->
+
   <!-- ═══════════════ REQUEST / PICKUP FORM ═══════════════ -->
   <section class="ss-request" id="contact">
     <!-- Left -->
@@ -1135,10 +1440,12 @@
       <!-- Brand -->
       <div class="ss-footer__col ss-footer__brand">
         <div class="ss-footer__logo">
-          <img src="assets/images/logo.webp" alt="SiberSentinel Logo" />
+          <img src="assets/images/sentinel-data-recovery-logo (2).webp" alt="SiberSentinel Logo" />
         </div>
         <p class="ss-footer__tagline">
           Data recovery specialists for enterprise and critical storage environments.
+          We provide secure, confidential recovery solutions for HDDs, SSDs, RAID arrays,
+          servers, and cloud systems — trusted for fast diagnostics and reliable restoration.
         </p>
       </div>
 
@@ -1174,6 +1481,34 @@
         </ul>
       </div>
 
+
+      <div class="ss-footer__col">
+        <h4 class="ss-footer__col-title">Services</h4>
+        <ul class="ss-footer__contact-list">
+
+          <li>
+            <a href="#">About Us</a>
+          </li>
+
+          <li>
+            <a href="#">Data Recovery</a>
+          </li>
+
+          <li>
+            <a href="#">RAID Recovery</a>
+          </li>
+
+          <li>
+            <a href="#">SSD Recovery</a>
+          </li>
+
+          <li>
+            <a href="#">Contact Us</a>
+          </li>
+
+        </ul>
+      </div>
+
       <!-- Urgent Help -->
       <div class="ss-footer__col ss-footer__urgent">
         <h4 class="ss-footer__col-title">Need urgent help?</h4>
@@ -1203,6 +1538,9 @@
   <!-- Scripts -->
   <!-- 2. Swiper JS -->
   <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+
+
+
   <!-- 3. main.js  -->
   <script src="assets/js/main.js"></script>
 </body>
