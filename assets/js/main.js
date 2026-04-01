@@ -1,21 +1,20 @@
 $(function () {
-
-    // Navbar Toggle
+    // --- Navbar Toggle ---
     const $hamburger = $('#hamburger');
     const $mobileMenu = $('#mobileMenu');
 
-    $hamburger.click(function () {
+    $hamburger.on('click', function () {
         $hamburger.toggleClass('open');
         $mobileMenu.toggleClass('open');
     });
 
-    $mobileMenu.find('a').click(function () {
+    $mobileMenu.find('a').on('click', function () {
         $hamburger.removeClass('open');
         $mobileMenu.removeClass('open');
     });
 
-    // Swiper
-    var swiper = new Swiper(".mySwiper", {
+    // --- Swiper ---
+    const swiper = new Swiper(".mySwiper", {
         slidesPerView: 4,
         spaceBetween: 20,
         loop: true,
@@ -46,17 +45,16 @@ $(function () {
     function createDots() {
         if (!$dotsContainer.length) return;
         $dotsContainer.empty();
-        
-        // Only create dots if NOT on mobile (width > 600px)
+
         if (window.innerWidth > 600) {
             const visibleCards = getVisibleCards();
-            const dotCount = $cards.length - visibleCards + 1;
+            const dotCount = Math.max(0, $cards.length - visibleCards + 1);
 
             for (let i = 0; i < dotCount; i++) {
                 const $dot = $('<button></button>').addClass('nav-dot');
                 if (i === currentIndex) $dot.addClass('active');
-                
-                $dot.on('click', function() {
+
+                $dot.on('click', function () {
                     currentIndex = i;
                     updateCarousel();
                 });
@@ -70,14 +68,14 @@ $(function () {
         const gap = 24;
         const cardWidth = $cards.first().outerWidth() + gap;
         $track.css('transform', `translateX(-${currentIndex * cardWidth}px)`);
-        
-        $('.nav-dot').each(function(index) {
+
+        $('.nav-dot').each(function (index) {
             $(this).toggleClass('active', index === currentIndex);
         });
     }
 
     // Auto-scroll every 4 seconds
-    setInterval(() => {
+    const scrollInterval = setInterval(() => {
         const visibleCards = getVisibleCards();
         if (currentIndex >= $cards.length - visibleCards) {
             currentIndex = 0;
@@ -87,103 +85,81 @@ $(function () {
         updateCarousel();
     }, 4000);
 
-    // Initial setup for Testimonials
-    createDots();
-    
-
-    
-    // --- Process Section S-curve Connector ---
+    // --- Process S-Curve Logic ---
     function drawProcessConnectors() {
-        const svg = document.getElementById('ptSvg');
-        const container = document.getElementById('ptCards');
-        if (!svg || !container) return;
-        if (window.innerWidth <= 768) { svg.innerHTML = ''; return; }
+        const svg = document.getElementById('svg-conn');
+        const card = document.getElementById('tlcard');
+        const grid = document.getElementById('grid');
 
-        const ids = ['ptc1', 'ptc2', 'ptc3', 'ptc4', 'ptc5'];
-        const cardsArr = ids.map(id => document.getElementById(id));
-        const baseRect = container.getBoundingClientRect();
-        const segColors = ['#8b7fd4', '#8b7fd4', '#6ec6b8', '#e8d87a'];
+        if (!svg || !card || !grid) return;
 
-        const anchors = cardsArr.map((card, i) => {
-            if(!card) return null;
-            const r = card.getBoundingClientRect();
-            const x = r.left - baseRect.left + r.width / 2;
-            const isTop = i % 2 === 0;
-            const y = isTop ? r.top - baseRect.top + r.height : r.top - baseRect.top;
-            return { x, y, isTop };
-        }).filter(a => a !== null);
-
+        const cardR = card.getBoundingClientRect();
         svg.innerHTML = '';
 
-        for (let i = 0; i < anchors.length - 1; i++) {
-            const a = anchors[i], b = anchors[i + 1];
-            const color = segColors[i];
-            const midY = (a.y + b.y) / 2;
-            const r = 22;
-            let d;
-            if (a.isTop && !b.isTop) {
-                d = `M ${a.x} ${a.y} L ${a.x} ${midY - r} Q ${a.x} ${midY} ${a.x + r} ${midY} L ${b.x - r} ${midY} Q ${b.x} ${midY} ${b.x} ${midY + r} L ${b.x} ${b.y}`;
-            } else {
-                d = `M ${a.x} ${a.y} L ${a.x} ${midY + r} Q ${a.x} ${midY} ${a.x + r} ${midY} L ${b.x - r} ${midY} Q ${b.x} ${midY} ${b.x} ${midY - r} L ${b.x} ${b.y}`;
-            }
-            const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-            path.setAttribute('d', d);
-            path.setAttribute('fill', 'none');
-            path.setAttribute('stroke', color);
-            path.setAttribute('stroke-width', '4');
-            path.setAttribute('stroke-linecap', 'round');
-            path.setAttribute('stroke-linejoin', 'round');
-            svg.appendChild(path);
+        if (window.innerWidth <= 900) return;
 
-            const dot = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-            dot.setAttribute('cx', (a.x + b.x) / 2);
-            dot.setAttribute('cy', midY);
-            dot.setAttribute('r', '9');
-            dot.setAttribute('fill', color);
-            dot.setAttribute('stroke', 'rgba(255,255,255,0.3)');
-            dot.setAttribute('stroke-width', '2');
-            svg.appendChild(dot);
+        function iconCenter(stepId) {
+            const step = document.getElementById(stepId);
+            if (!step) return { x: 0, y: 0, top: 0, bot: 0 };
+            const icon = step.querySelector('.icon-box');
+            const r = icon.getBoundingClientRect();
+            return {
+                x: r.left - cardR.left + r.width / 2,
+                y: r.top - cardR.top + r.height / 2,
+                top: r.top - cardR.top,
+                bot: r.top - cardR.top + r.height
+            };
         }
 
-        // Arrow at end
-        if(anchors.length > 0) {
-            const last = anchors[anchors.length - 1];
-            const arrowY = last.y - 24;
-            const arrowX = last.x + 36;
-            const line = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-            line.setAttribute('d', `M ${last.x} ${last.y} L ${last.x} ${arrowY} L ${arrowX} ${arrowY}`);
-            line.setAttribute('fill', 'none');
-            line.setAttribute('stroke', '#e8d87a');
-            line.setAttribute('stroke-width', '4');
-            line.setAttribute('stroke-linecap', 'round');
-            line.setAttribute('stroke-linejoin', 'round');
-            svg.appendChild(line);
+        const p = {
+            s1: iconCenter('s1'), s2: iconCenter('s2'),
+            s3: iconCenter('s3'), s4: iconCenter('s4'),
+            s5: iconCenter('s5'), s6: iconCenter('s6')
+        };
 
-            const endDot = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-            endDot.setAttribute('cx', last.x + 14); endDot.setAttribute('cy', arrowY);
-            endDot.setAttribute('r', '9'); endDot.setAttribute('fill', '#e8d87a');
-            endDot.setAttribute('stroke', 'rgba(255,255,255,0.3)'); endDot.setAttribute('stroke-width', '2');
-            svg.appendChild(endDot);
+        const sw = 2.5; 
+        const r = 30;   
+        const col = '#1a1a1a';
+        let pathHtml = '';
 
-            const ah = document.createElementNS('http://www.w3.org/2000/svg', 'polygon');
-            ah.setAttribute('points', `${arrowX} ${arrowY - 7} ${arrowX + 14} ${arrowY} ${arrowX} ${arrowY + 7}`);
-            ah.setAttribute('fill', '#e8d87a');
-            svg.appendChild(ah);
-        }
+        // Vertical Lines
+        pathHtml += `<line x1="${p.s1.x}" y1="${p.s1.bot}" x2="${p.s2.x}" y2="${p.s2.top}" stroke="${col}" stroke-width="${sw}"/>`;
+        pathHtml += `<line x1="${p.s4.x}" y1="${p.s4.bot}" x2="${p.s3.x}" y2="${p.s3.top}" stroke="${col}" stroke-width="${sw}"/>`;
+        pathHtml += `<line x1="${p.s5.x}" y1="${p.s5.bot}" x2="${p.s6.x}" y2="${p.s6.top}" stroke="${col}" stroke-width="${sw}"/>`;
+
+        // Bridges
+        const bridgeTopY = Math.min(p.s4.top, p.s5.top) - 50;
+        const bridgeBotY = Math.max(p.s2.bot, p.s3.bot) + 50;
+
+        pathHtml += `<path d="M ${p.s4.x} ${p.s4.top} L ${p.s4.x} ${bridgeTopY + r} Q ${p.s4.x} ${bridgeTopY} ${p.s4.x + r} ${bridgeTopY} L ${p.s5.x - r} ${bridgeTopY} Q ${p.s5.x} ${bridgeTopY} ${p.s5.x} ${bridgeTopY + r} L ${p.s5.x} ${p.s5.top}" fill="none" stroke="${col}" stroke-width="${sw}"/>`;
+        pathHtml += `<path d="M ${p.s2.x} ${p.s2.bot} L ${p.s2.x} ${bridgeBotY - r} Q ${p.s2.x} ${bridgeBotY} ${p.s2.x + r} ${bridgeBotY} L ${p.s3.x - r} ${bridgeBotY} Q ${p.s3.x} ${bridgeBotY} ${p.s3.x} ${bridgeBotY - r} L ${p.s3.x} ${p.s3.bot}" fill="none" stroke="${col}" stroke-width="${sw}"/>`;
+
+        svg.innerHTML = pathHtml;
     }
 
-    // Combined Resize/Load handler for both sections
-    $(window).on('load resize', function() {
-        // Update Testimonials
+    // --- Unified Initialization & Event Listeners ---
+    function initAll() {
         const visibleCards = getVisibleCards();
-        if (currentIndex > $cards.length - visibleCards) {
-            currentIndex = 0;
-        }
+        if (currentIndex > $cards.length - visibleCards) currentIndex = 0;
+        
         createDots();
         updateCarousel();
-
-        // Update Process S-curve
         drawProcessConnectors();
-    });
+    }
 
+    // Run on Load and Resize
+    $(window).on('load resize', initAll);
+
+    // Watch for internal layout shifts
+    if (window.ResizeObserver) {
+        const ro = new ResizeObserver(() => {
+            // Use requestAnimationFrame to avoid "ResizeObserver loop limit exceeded"
+            window.requestAnimationFrame(drawProcessConnectors);
+        });
+        const gridEl = document.getElementById('grid');
+        if (gridEl) ro.observe(gridEl);
+    }
+    
+    // Initial Trigger
+    initAll();
 });
