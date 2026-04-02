@@ -29,6 +29,12 @@ $(function () {
             1024: { slidesPerView: 4 }
         }
     });
+// service details code
+
+
+
+
+
 
     // --- Testimonial Carousel Logic ---
     const $track = $('#testimonial-track');
