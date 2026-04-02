@@ -549,12 +549,16 @@ h6 {
   border-radius: var(--radius-md);
   display: block;
   object-fit: cover;
+
 }
 
+.carousel-inner{
+  border-radius: 20px;
+}
 /* carousel dots */
 /* Carousel Dots Styling */
 #heroSlider .carousel-indicators {
-  bottom: -20px;
+  bottom: -50px;
 
 }
 
